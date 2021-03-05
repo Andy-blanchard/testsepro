@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+         <record id="barcode_rule_gs1_package" model="barcode.rule">
+            <field name="name">GS1 Barcodes Package</field>
+            <field name="barcode_nomenclature_id" ref="barcodes.default_barcode_nomenclature"/>
+            <field name="sequence">36</field>
+            <field name="type">package</field>
+            <field name="encoding">gs1</field>
+            <field name="pattern">(00).....{N}</field>
+        </record>
+        
+        <record id="barcode_rule_gs1_lot" model="barcode.rule">
+            <field name="name">GS1 Barcodes Lot</field>
+            <field name="barcode_nomenclature_id" ref="barcodes.default_barcode_nomenclature"/>
+            <field name="sequence">37</field>
+            <field name="type">product</field>
+            <field name="encoding">gs1</field>
+            <field name="pattern">(02).....(37).....(10).....{N}</field>
+        </record>
+        
+    </data>
+</odoo>
