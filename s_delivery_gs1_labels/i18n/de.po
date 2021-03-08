@@ -1,0 +1,198 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* suppl_delivery_gs1_labels
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-21 13:20+0000\n"
+"PO-Revision-Date: 2020-01-21 13:20+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: suppl_delivery_gs1_labels
+#: code:addons/suppl_delivery_gs1_labels/models/delivery_gs1_label.py:0
+#, python-format
+msgid ""
+"\n"
+"\n"
+" - Following packages have no products assigned. Maybe you have not assigned any quantities and validated your related pickings: \n"
+msgstr ""
+"\n"
+"\n"
+" - Nachfolgende Pakete haben keine zugewiesenen Produkte. Möglicherweiße wurde noch keine Anzahl festgelegt oder die entsprechenden Bewegungen wurden noch nicht abgeschlossen: \n"
+
+#. module: suppl_delivery_gs1_labels
+#: code:addons/suppl_delivery_gs1_labels/models/delivery_gs1_label.py:0
+#, python-format
+msgid ""
+"\n"
+"\n"
+" - Following packages have no valid SSCC number with 18 characters: \n"
+msgstr ""
+"\n"
+"\n"
+" - Nachfolgend Pakete haben keine gültige SSCC Number mit 18 Stellen hinterlegt: \n"
+
+#. module: suppl_delivery_gs1_labels
+#: code:addons/suppl_delivery_gs1_labels/models/delivery_gs1_label.py:0
+#, python-format
+msgid ""
+"\n"
+"\n"
+" - Following products do not have a valid barcode with 13 characters: \n"
+msgstr ""
+"\n"
+"\n"
+" - Nachfolgende Produkte haben keinen gültigen Strichcode mit 13 Stellen hinterlegt: \n"
+
+#. module: suppl_delivery_gs1_labels
+#: code:addons/suppl_delivery_gs1_labels/models/delivery_gs1_label.py:0
+#, python-format
+msgid ""
+"\n"
+"\n"
+" - No packages found in selected picking(s) (%s)"
+msgstr ""
+"\n"
+"\n"
+" - Keine Pakete in ausgewählten Bewegungen gefunden (%s)."
+
+#. module: suppl_delivery_gs1_labels
+#: code:addons/suppl_delivery_gs1_labels/models/delivery_gs1_label.py:0
+#, python-format
+msgid ""
+"\n"
+"\n"
+" No valid packages to print available."
+msgstr ""
+"\n"
+"\n"
+" Keine gültigen Pakete zum Drucken verfügbar."
+
+#. module: suppl_delivery_gs1_labels
+#: model:ir.actions.report,print_report_name:suppl_delivery_gs1_labels.suppl_action_report_gs1_sscc_label_package
+#: model:ir.actions.report,print_report_name:suppl_delivery_gs1_labels.suppl_action_report_gs1_sscc_label_picking
+msgid "'Package - %s' % object.name"
+msgstr "'Paketlabel - %s' % object.name"
+
+#. module: suppl_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:suppl_delivery_gs1_labels.suppl_delivery_gs1_label_compact
+msgid "(Best before date):"
+msgstr "(Mindesthaltbarkeitsdatum)"
+
+#. module: suppl_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:suppl_delivery_gs1_labels.suppl_delivery_gs1_label_compact
+msgid "(GTIN of the trade item):"
+msgstr "(GTIN der Handelseinheit)"
+
+#. module: suppl_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:suppl_delivery_gs1_labels.suppl_delivery_gs1_label_compact
+msgid "(Los/Charge):"
+msgstr "(Los/Charge)"
+
+#. module: suppl_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:suppl_delivery_gs1_labels.suppl_delivery_gs1_label_compact
+msgid "(Quantity of trade items):"
+msgstr "(Anzahl der Handelseinheiten)"
+
+#. module: suppl_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:suppl_delivery_gs1_labels.suppl_delivery_gs1_label_compact
+msgid "BATCH/LOT"
+msgstr ""
+
+#. module: suppl_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:suppl_delivery_gs1_labels.suppl_delivery_gs1_label_compact
+msgid "BEST BEFORE, dd.mm.yyy"
+msgstr ""
+
+#. module: suppl_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:suppl_delivery_gs1_labels.suppl_delivery_gs1_label_compact
+msgid "Barcode"
+msgstr "Strichcode"
+
+#. module: suppl_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:suppl_delivery_gs1_labels.suppl_delivery_gs1_label_compact
+msgid "CONTENT"
+msgstr ""
+
+#. module: suppl_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:suppl_delivery_gs1_labels.suppl_delivery_gs1_label_compact
+msgid "COUNT"
+msgstr ""
+
+#. module: suppl_delivery_gs1_labels
+#: code:addons/suppl_delivery_gs1_labels/models/delivery_gs1_label.py:0
+#, python-format
+msgid "Can not print SSCC shipping label(s), one or more errors found:"
+msgstr "SSCC-Etiketten können nicht gedruckt werden, da ein oder mehrere Fehler aufgetreten sind:"
+
+#. module: suppl_delivery_gs1_labels
+#: model:ir.model.fields,field_description:suppl_delivery_gs1_labels.field_stock_quant__computed_barcode_article
+msgid "GS1 Article Barcode"
+msgstr "GS1 Artikelstrichcode"
+
+#. module: suppl_delivery_gs1_labels
+#: model:ir.model.fields,field_description:suppl_delivery_gs1_labels.field_stock_quant__computed_barcode_lot
+msgid "GS1 Lot Barcode"
+msgstr "GS1 Lotstrichcode"
+
+#. module: suppl_delivery_gs1_labels
+#: model:ir.actions.report,name:suppl_delivery_gs1_labels.suppl_action_report_gs1_sscc_label_package
+#: model:ir.actions.report,name:suppl_delivery_gs1_labels.suppl_action_report_gs1_sscc_label_picking
+msgid "GS1 Package Labels (PDF)"
+msgstr "GS1 Paketlabel (PDF)"
+
+#. module: suppl_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:suppl_delivery_gs1_labels.product_normal_form_view_inherit_barcodebutton_via_menuitem
+#: model_terms:ir.ui.view,arch_db:suppl_delivery_gs1_labels.product_template_only_form_view_barcode_button
+#: model_terms:ir.ui.view,arch_db:suppl_delivery_gs1_labels.product_variant_easy_edit_view_inherit_barcodebutton_via_smartbuttons
+msgid "Generate GTIN"
+msgstr "Erstelle GTIN"
+
+#. module: suppl_delivery_gs1_labels
+#: model:ir.model,name:suppl_delivery_gs1_labels.model_stock_quant_package
+msgid "Packages"
+msgstr "Verpackungen"
+
+#. module: suppl_delivery_gs1_labels
+#: model:ir.model,name:suppl_delivery_gs1_labels.model_product_product
+msgid "Product"
+msgstr "Produkt"
+
+#. module: suppl_delivery_gs1_labels
+#: code:addons/suppl_delivery_gs1_labels/models/product_product.py:0
+#: code:addons/suppl_delivery_gs1_labels/models/product_template.py:0
+#, python-format
+msgid ""
+"Product %s already has an assigned barcode [%s]. If you are sure, you want "
+"to set a new barcode, please empty the current barcode field."
+msgstr ""
+"Dem Produkt %s wurde bereits ein Strichcode [%s] zugewiesen. Wenn Sie sich "
+"sicher sind, dass Sie einen neuen Strichcode zuweisen wollen, leeren Sie "
+"Bitte das Strichcode-Feld und führen die Funktion erneut aus."
+
+#. module: suppl_delivery_gs1_labels
+#: model:ir.model,name:suppl_delivery_gs1_labels.model_product_template
+msgid "Product Template"
+msgstr "Produktvorlage"
+
+#. module: suppl_delivery_gs1_labels
+#: model:ir.model,name:suppl_delivery_gs1_labels.model_stock_quant
+msgid "Quants"
+msgstr ""
+
+#. module: suppl_delivery_gs1_labels
+#: model:ir.model.fields,field_description:suppl_delivery_gs1_labels.field_stock_quant_package__sscc_number
+msgid "SSCC"
+msgstr ""
+
+#. module: suppl_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:suppl_delivery_gs1_labels.suppl_delivery_gs1_label_compact
+msgid "SSCC:"
+msgstr ""

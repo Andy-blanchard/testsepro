@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <data> 
+
+	<template id="assets_backend_parser" name="barcodes assets" inherit_id="barcodes.assets_backend">
+        <xpath expr="//script[@src='/barcodes/static/src/js/barcode_parser.js']" position="replace"/>
+        <xpath expr="//script[@src='/barcodes/static/src/js/barcode_field.js']" position="after">
+            <script type="text/javascript" src="/s_delivery_gs1_labels/static/src/js/barcode_parser.js"></script>
+            
+        </xpath>
+    </template>
+       
+ </data>
+</odoo>

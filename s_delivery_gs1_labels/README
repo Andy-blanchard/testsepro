@@ -1,0 +1,53 @@
+- Add GS1 information to packages to print GS1 SSCC labels
+--------------------------------------------------------
+* OVERVIEW                                             *
+--------------------------------------------------------
+- Barcode sequence to create sequential GS1 conform barcodes.
+- SSCC sequence to create sequential GS1 conform SSCC codes and labels.
+- SSCC label according to GS1 specification
+
+
+--------------------------------------------------------
+* USAGE                                                *
+--------------------------------------------------------
+
+Dependencies
+--------------------------------------------------------
+Please make sure that following Python dependencies are installed correctly on your server running Odoo:
+- python-barcode
+- python-barcode[images]
+
+
+Packages
+--------------------------------------------------------
+To use this module enable packaging in Settings > Inventory > Delivery Packages
+
+
+Barcode and SSCC sequence
+--------------------------------------------------------
+Configure your barcode and SSCC sequence to use your GS1 base number (=GS1 Company Prefix)
+
+1. Navigate to settings
+2. Activate developer mode
+3. Navigate to Settings > Technical > Sequences
+4. Search for 'GS1 Product barcode'
+    a. Edit the prefix value and set your GS1 base number
+    b. Save
+5. Search for 'SSCC Number'
+    a. Edit the prefix value and set your GS1 base number
+    b. Save
+
+
+Company information
+--------------------------------------------------------
+Please make sure that your company information is set:
+- Settings > General Settings > Companies > Update Info / Manage Companies
+
+Your company information will be printed on your SSCC labels.
+
+
+Print SSCC Label
+--------------------------------------------------------
+To print a label simply open or create a warehouse order and put your products in one or more packages. After
+validation of warehouse order your package(s) is/are created with SSCC information set. Use the print actions to
+generate a label.
