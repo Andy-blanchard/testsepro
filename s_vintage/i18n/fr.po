@@ -1,0 +1,91 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s_vintage
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-19 14:08+0000\n"
+"PO-Revision-Date: 2021-02-19 14:08+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s_vintage
+#: model:ir.model.fields,help:s_vintage.field_stock_production_lot__ref
+msgid ""
+"Internal reference number in case it differs from the manufacturer's "
+"lot/serial number"
+msgstr ""
+"Référence interne, dans le cas où celle-ci est différente du numéro de "
+"lot/série du fabricant"
+
+#. module: s_vintage
+#: model:ir.model,name:s_vintage.model_stock_production_lot
+msgid "Lot/Serial"
+msgstr "Lot/N° série"
+
+#. module: s_vintage
+#: model:ir.model.fields.selection,name:s_vintage.selection__product_template__s_vin__no_vin
+msgid "No Wine"
+msgstr "Non Vin"
+
+#. module: s_vintage
+#: code:addons/s_vintage/models/mrp_product_produce.py:0
+#, python-format
+msgid "Produce"
+msgstr "Produire"
+
+#. module: s_vintage
+#: model:ir.model,name:s_vintage.model_product_template
+msgid "Product Template"
+msgstr "Modèle d'article"
+
+#. module: s_vintage
+#: model:ir.model,name:s_vintage.model_mrp_production
+msgid "Production Order"
+msgstr "Ordre de fabrication"
+
+#. module: s_vintage
+#: model:ir.model,name:s_vintage.model_mrp_product_produce
+msgid "Record Production"
+msgstr "Enregistrer la production"
+
+#. module: s_vintage
+#: model:ir.model.fields,field_description:s_vintage.field_stock_production_lot__ref
+msgid "Vintage"
+msgstr "Millésime"
+
+#. module: s_vintage
+#: model:ir.model.fields,field_description:s_vintage.field_product_product__s_vin
+#: model:ir.model.fields,field_description:s_vintage.field_product_template__s_vin
+#: model:ir.model.fields.selection,name:s_vintage.selection__product_template__s_vin__vin
+msgid "Wine"
+msgstr "Vin"
+
+#. module: s_vintage
+#: model:ir.model,name:s_vintage.model_mrp_workorder
+msgid "Work Order"
+msgstr "Ordre de travail"
+
+#. module: s_vintage
+#: code:addons/s_vintage/models/mrp_production.py:0
+#, python-format
+msgid "Work order %s is still running"
+msgstr "L'ordre de travail %s est encore en cours"
+
+#. module: s_vintage
+#: code:addons/s_vintage/models/mrp_production.py:0
+#, python-format
+msgid "You cannot produce a MO with a bom kit product."
+msgstr "Vous ne pouvez produire un OF avec une nomenclature de type kit."
+
+#. module: s_vintage
+#: model:ir.model.fields,field_description:s_vintage.field_mrp_product_produce__s_manufactoring_order
+#: model:ir.model.fields,field_description:s_vintage.field_mrp_workorder__s_manufactoring_order
+msgid "name"
+msgstr "Nom"

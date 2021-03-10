@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  
+    <record model="ir.ui.view" id="s_mrp_production_workorder_form_view_inherit">
+        <field name="name">s.mrp.production.work.order.form</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp.mrp_production_workorder_form_view_inherit"/>
+        <field name="arch" type="xml">
+        	<xpath expr="//form/sheet/notebook/page[2]/group/group/field[@name='finished_lot_id']" position="before">
+           		<field name="s_manufactoring_order" invisible="1"/>
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page[2]/group/group/field[@name='finished_lot_id']" position="replace">
+           		<field name="finished_lot_id" context="{'default_name': s_manufactoring_order, 'default_product_id': product_id, 'default_company_id': company_id}" attrs="{'invisible': [('product_tracking', '=', 'none')]}" groups="stock.group_production_lot"/>
+            </xpath>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="s_mrp_workorder_view_form_tablet_inherit">
+        <field name="name">s.mrp.production.work.order.form.tablet</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/div[@class='workorder_bar']/div[2]/div/field[@name='finished_lot_id']" position="before">
+            	<field name="s_manufactoring_order" invisible="1"/>
+            </xpath>
+            <xpath expr="//form/div[@class='workorder_bar']/div[2]/div/field[@name='finished_lot_id']" position="replace">
+            	<field name="finished_lot_id" context="{'default_name': s_manufactoring_order, 'default_product_id': product_id, 'default_company_id': company_id}" domain="[('id', 'in', allowed_lots_domain)]"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

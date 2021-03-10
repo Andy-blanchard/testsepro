@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+       <template id="assets_backend" name="stock_barcode assets" inherit_id="stock_barcode.assets_backend">
+            <xpath expr="//script[@src='/stock_barcode/static/src/js/client_action/abstract_client_action.js']" position="replace">
+                
+                <script type="text/javascript" src="/s_delivery_gs1_labels/static/src/js/client_action/abstract_client_action.js"></script>
+                
+            </xpath>
+        </template>
+
+        
+
+    </data>
+</odoo>
