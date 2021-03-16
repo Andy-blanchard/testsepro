@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <template id="gs1_label_package">
+        <t t-set="full_width" t-value="True"/>
+        <t t-call="web.basic_layout">
+            <t t-set="packages" t-value="docs"/>
+                <t t-call="s_delivery_gs1_labels.gs1_label_compact"/>
+        </t>
+    </template>
+
+    <template id="gs1_label_picking">
+        <t t-set="full_width" t-value="True"/>
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="stock_picking">
+                    <t t-set="packages"
+                       t-value="stock_picking.move_line_ids.filtered(lambda ml: ml.result_package_id).mapped('result_package_id')"/>
+                    <t t-call="s_delivery_gs1_labels.gs1_label_compact"/>
+                </t>
+        </t>
+    </template>
+
+    <template id="gs1_label_compact">
+        <style>
+                html, body, main, .page {
+                    top: 0 !important;
+                    left: 0 !important;
+                    right: 0 !important;
+                    bottom: 0 !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                }
+
+                .page {
+                    page-break-after: always;
+                    position: relative;
+                    overflow: hidden;
+                    width: 150mm;
+                    height: 225mm;
+                }
+
+                @media print {
+                html, body, main, .page {
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                }
+                }
+            </style>
+            
+        <t t-foreach="packages" t-as="package">
+            <t t-foreach="package.quant_ids" t-as="package_content">
+                <t t-set="product" t-value="package_content.product_id"/>
+                <t t-set="company_id" t-value="package.company_id or False"/>
+                <t t-set="lot_id" t-value="false"/>
+                <t t-set="qty" t-value="1"/>
+
+                <t t-if="product.tracking != 'none'">
+                    <t t-set="lot_id" t-value="package_content.lot_id"/>
+                </t>
+                <t t-if="qty &lt;= 0">
+                    <t t-set="qty" t-value="1"/>
+                </t>
+
+                <t t-if="not company_id">
+                    <t t-set="company_id" t-value="package_content.company_id or False"/>
+                </t>
+
+                <t t-if="not company_id">
+                    <t t-set="company_id" t-value="product.product_tmpl_id.company_id or False"/>
+                </t>
+
+                <t t-if="not company_id and lot_id">
+                     <t t-set="company_id" t-value="lot_id.company_id or False"/>
+                </t>
+
+                <t t-foreach="range(qty)" t-as="item">
+                  <div class="page">
+                    <div class="media justify-content-around" style="height: 12.5rem;">
+                        <t t-if="company_id">
+                            <div class="media-body col-9">
+                                <div style="font-style: Lato-Bol; font-size: 1.5rem; font-weight: bold; line-height: 4rem;">
+                                    <b t-field="company_id.name"/>
+                                </div>
+                                <div style="font-size: 1.3rem; font-weight: normal; line-height: 2rem;">
+                                    <span t-field="company_id.street"/>
+                                </div>
+                                <div style="font-size: 1.3rem; font-weight: normal; line-height: 2rem">
+                                    <span t-field="company_id.zip"/>
+                                    <span t-field="company_id.city"/>
+                                </div>
+                                <div style="font-style: Lato-Bol; font-size: 1.85rem; font-weight: bold; line-height: 2.5rem; width: 135mm;">
+                                    <b t-field="product.display_name"/>
+                                </div>
+                            </div>
+
+                            <img t-att-src="image_data_uri(company_id.logo)" style="width: 5rem;height: 5rem;margin: 1.45rem;" t-att-alt="package.company_id.name"/>
+                        </t>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="row no-gutters">
+                            <div class="col-12" style="border: 2px solid black"/>
+                        </div>
+
+                        <div class="row no-gutters" style="margin-top: 0.5rem">
+                            <div class="col-2" style="line-height: 3.75rem; font-size: 1.3rem; font-weight: 300;">SSCC:
+                            </div>
+                            <div class="col-10" style="font-style: Lato-Bla; line-height: 3.2rem; text-align: right; font-weight: bolder; font-size: 2.5rem;">
+                                <b t-esc="package.sscc_number"/>
+                            </div>
+                        </div>
+
+                        <div class="row no-gutters">
+                            <div class="col-4" style="line-height: 2.6rem; font-size: 1.2rem; font-weight: 300;">
+                                <div>CONTENT</div>
+                                <div style="line-height: 0; font-size: 1rem; width: 250px;">(GTIN of the trade item):</div>
+                            </div>
+                            <div class="col-8" style="line-height: 3.85rem; text-align: right; font-weight: 300; font-size: 2.2rem;">
+                                <span t-esc="product.barcode"/>
+                            </div>
+                        </div>
+
+                        <div class="row no-gutters">
+                            <div class="col-5" style="line-height: 2.6rem; font-size: 1.2rem; font-weight: 300;">
+                                <div>COUNT</div>
+                                <div style="line-height: 0; font-size: 1.1rem; width: 250px;">(Quantity of trade items):</div>
+                            </div>
+                            <div class="col-7" style="line-height: 3.85rem; text-align: right; font-weight: 300; font-size: 2.2em;">
+                                <span t-esc="int(package_content.quantity)"/>
+                            </div>
+                        </div>
+
+                        <div class="row no-gutters">
+                            <div class="col-6" style="line-height: 2.6rem; font-size: 1.2rem; font-weight: 300;">
+                                <div>BEST BEFORE, dd.mm.yyy</div>
+                                <div style="line-height: 0; font-size: 1.1rem; width: 250px;">(Best before date):</div>
+                            </div>
+                            <div class="col-6" style="line-height: 3.85rem; text-align: right; font-weight: 300; font-size: 2.2rem;">
+                                <span t-if="lot_id and lot_id.use_date" t-esc="lot_id.use_date.strftime('%d.%m.%Y')"/>
+                                <span t-else="">---</span>
+                            </div>
+                        </div>
+
+                        <div class="row no-gutters">
+                            <div class="col-4" style="line-height: 2.6rem; font-size: 1.2rem; font-weight: 300;">
+                                <div>BATCH/LOT</div>
+                                <div style="line-height: 0; font-size: 1.1rem; width: 250px;">(Los/Charge):</div>
+                            </div>
+                            <div class="col-8" style="line-height: 3.85rem; text-align: right; font-weight: 300; font-size: 2.2rem;">
+                                <span t-if="lot_id" t-esc="lot_id.name"/>
+                                <span t-else="">---</span>
+                            </div>
+                        </div>
+
+                        <div class="row no-gutters" style="margin-top: 0.9rem;">
+                            <div class="col-12" style="border: 1px solid black"/>
+                        </div>
+                        
+                        
+                         <div class="row no-gutters" style="margin-top: 1.85rem">
+                            <div class="col-12" style="text-align: center">
+                               <img width="475" height="95" t-att-src="'/report/svg-barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;dpi=%s&amp;quiet=0' % ('Gs1_128', package_content.computed_barcode_article_text, 0.5, 18, 26)" alt="Barcode"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col" style="text-align: center; font-size: 1.3rem;">
+                                <span t-esc="package_content.computed_barcode_article_text"/>
+                            </div>
+                        </div>
+                        
+                        <div class="row no-gutters" style="margin-top: 1.85rem">
+                            <div class="col-12" style="text-align: center">
+                               <img width="475" height="95" t-att-src="'/report/svg-barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;dpi=%s&amp;quiet=0' % ('Gs1_128', package_content.computed_barcode_lot_text, 0.5, 18, 26)" alt="Barcode"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col" style="text-align: center; font-size: 1.3rem;">
+                                <span t-esc="package_content.computed_barcode_lot_text"/>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  
+    <record id="s_view_mrp_product_produce_wizard" model="ir.ui.view">
+        <field name="name">MRP Product Produce</field>
+        <field name="model">mrp.product.produce</field>
+        <field name="inherit_id" ref="mrp.view_mrp_product_produce_wizard"/>
+        <field name="arch" type="xml">
+        	<xpath expr="//form/group[1]/group/div[2]/field[@name='finished_lot_id']" position="before">
+           		<field name="s_manufactoring_order" invisible="1"/>
+            </xpath>
+            <xpath expr="//form/group[1]/group/div[2]/field[@name='finished_lot_id']" position="replace">
+           		<field name="finished_lot_id" attrs="{'invisible': [('product_tracking', '=', 'none')], 'required': [('product_tracking', '!=', 'none'), ('finished_lot_id', '!=', False)]}" context="{'default_name': s_manufactoring_order, 'default_product_id': product_id, 'default_company_id': company_id}"/>
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="product_normal_form_view_inherit" model="ir.ui.view">
+        <field name="name">Product Produce</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+        	<xpath expr="//form/sheet/notebook/page[@name='general_information']/group/group[1]/field[@name='categ_id']" position="after">
+           		<field name="s_vin"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
