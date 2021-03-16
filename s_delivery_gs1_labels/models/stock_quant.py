@@ -6,6 +6,7 @@ import logging
 from ..common import calculate_gs1_check_digit, GTIN_LENGTH, GTIN_14_LENGTH, GLN_LENGTH, SSCC_LENGTH, SSCC_EXTENSION_DIGIT
 
 _logger = logging.getLogger(__name__)
+from odoo.osv import expression
 
 
 class StockQuant(models.Model):
@@ -96,3 +97,34 @@ class QuantPackage(models.Model):
             temp_sscc = '%s%s%s' % (SSCC_EXTENSION_DIGIT, gs1_base, serial)
 
             quant.sscc_number = '%s%s' % (temp_sscc, calculate_gs1_check_digit(temp_sscc))
+    
+    @api.model
+    def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
+        args = args or []
+        domain = []
+        sscc_code = False
+        print(name)
+        if name and '(00)' in str(name):
+            barcode = str(name)
+            index_00 = barcode.find('(00)')
+            sscc_code = barcode[index_00+4:]
+            if '(' in sscc_code:
+                index_new_bracket = sscc_code.find('(')
+                sscc_code = sscc_code[:index_new_bracket]                         
+        if not sscc_code:
+            stock_quant_package_ids = self._search(expression.AND([domain, args]), limit=limit, access_rights_uid=name_get_uid)
+        else:            
+            stock_quant_package_ids = self._search([('sscc_number', '=', sscc_code)], limit=limit, access_rights_uid=name_get_uid)
+        return models.lazy_name_get(self.browse(stock_quant_package_ids).with_user(name_get_uid))
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

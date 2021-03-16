@@ -190,7 +190,6 @@ var ClientAction = AbstractAction.extend({
     },
 
     _isProduct: function (barcode) {
-        console.log("4");
         var parsed = this.barcodeParser.parse_barcode(barcode);
         if (parsed.type === 'weight') {
             var product = this.productsByBarcode[parsed.base_code];
@@ -581,7 +580,6 @@ var ClientAction = AbstractAction.extend({
      * @returns {Promise}
      */
     _onBarcodeScanned: function (barcode) {
-        console.log("0");
         var self = this;
         return this.stepsByName[this.currentStep || 'source'](barcode, []).then(function (res) {
             /* We check now if we need to change page. If we need to, we'll call `this.save` with the
@@ -603,11 +601,6 @@ var ClientAction = AbstractAction.extend({
                 )
             ) {
                 // The expected locations are the scanned locations or the default picking locations.
-                console.log("06");
-                console.log(currentPage.location_dest_id);
-                console.log(currentPage.location_id);
-                console.log(self.scanned_location_dest.id);
-                console.log(self.scanned_location.id);
                 var expectedLocationId = self.scanned_location.id;
                 var expectedLocationDestId;
                 if (self.actionParams.model === 'stock.picking'){
@@ -619,11 +612,6 @@ var ClientAction = AbstractAction.extend({
                 if (expectedLocationId !== currentPage.location_id ||
                     expectedLocationDestId !== currentPage.location_dest_id
                 ) {
-                    console.log("01");
-                    console.log(expectedLocationId);
-                    console.log(expectedLocationDestId);
-                    console.log(currentPage.location_id);
-                    console.log(currentPage.location_dest_id);
                     var params = {
                         new_location_id: expectedLocationId,
                     };
@@ -645,14 +633,10 @@ var ClientAction = AbstractAction.extend({
                 _.each(linesActions, function (action) {
                     action[0].apply(self.linesWidget, action[1]);
                 });
-            console.log("02");
             };
             prom.then(always).guardedCatch(always);
-            console.log("03");
             return prom;
         }, function (errorMessage) {
-            console.log("04");
-            console.log(errorMessage);
             self.do_warn(_t('Warning'), errorMessage);
         });
     },
@@ -664,7 +648,6 @@ var ClientAction = AbstractAction.extend({
      * @private
      */
     _endBarcodeFlow: function () {
-        console.log("end");
         this.scanned_location = undefined;
         this.scannedLines = [];
         this.scanned_location_dest = undefined;
@@ -781,33 +764,30 @@ var ClientAction = AbstractAction.extend({
         var isNewLine = false;
         if (line) {
             // Update the line with the processed quantity.
-            if (params.product.tracking === 'none' ||
-                params.lot_id ||
-                params.lot_name
-                ) {
-                if (this.actionParams.model === 'stock.picking') {
-                    line.qty_done += params.product.qty || 1;
-                    if (params.package_id) {
-                        line.package_id = params.package_id;
-                    }
-                    if (params.result_package_id) {
-                        line.result_package_id = params.result_package_id;
-                    }
-                } else if (this.actionParams.model === 'stock.inventory') {
-                    line.product_qty += params.product.qty || 1;
+            
+            if (this.actionParams.model === 'stock.picking') {
+                line.qty_done += params.product.qty || 1;
+                line.qty_done_char = (parseFloat(line.qty_done_char) + params.product.qty || 1).toString();
+                console.log("aa");
+                console.log(line.qty_done_char);
+                if (params.package_id) {
+                    line.package_id = params.package_id;
                 }
+                if (params.result_package_id) {
+                    line.result_package_id = params.result_package_id;
+                }
+            } else if (this.actionParams.model === 'stock.inventory') {
+                line.product_qty += params.product.qty || 1;
             }
+            
         } else {
             isNewLine = true;
             // Create a line with the processed quantity.
-            if (params.product.tracking === 'none' ||
-                params.lot_id ||
-                params.lot_name
-                ) {
-                line = this._makeNewLine(params.product, params.barcode, params.product.qty || 1, params.package_id, params.result_package_id);
-            } else {
-                line = this._makeNewLine(params.product, params.barcode, 0, params.package_id, params.result_package_id);
-            }
+            
+            line = this._makeNewLine(params.product, params.barcode, params.product.qty || 1, params.package_id, params.result_package_id);
+            line.qty_done_char = (parseFloat(line.qty_done_char) + params.product.qty || 1).toString();
+            console.log("bb");
+            console.log(line.qty_done_char);
             this._getLines(this.currentState).push(line);
             this.pages[this.currentPageIndex].lines.push(line);
         }
@@ -906,7 +886,6 @@ var ClientAction = AbstractAction.extend({
      * @returns {Promise}
      */
     _step_product: function (barcode, linesActions) {
-        console.log("1");
         var self = this;
         this.currentStep = 'product';
         var errorMessage;
@@ -940,12 +919,9 @@ var ClientAction = AbstractAction.extend({
                 	linesActions.push([this.linesWidget.addProduct, [res.lineDescription, this.actionParams.model]]);
                 }
             } else {
-                if (product.tracking === 'none') {
-                    linesActions.push([this.linesWidget.incrementProduct, [res.id || res.virtualId, product.qty || 1, this.actionParams.model]]);
-                } else {
-                	
-                    linesActions.push([this.linesWidget.incrementProduct, [res.id || res.virtualId, 0, this.actionParams.model]]);
-                }
+               
+              	linesActions.push([this.linesWidget.incrementProduct, [res.id || res.virtualId, product.qty || 1, this.actionParams.model]]);
+               
             }
             this.scannedLines.push(res.id || res.virtualId);
             return Promise.resolve({linesActions: linesActions});
@@ -1314,11 +1290,25 @@ var ClientAction = AbstractAction.extend({
                     product_id: [line_with_lot.product_id.id, line_with_lot.display_name],
                 }]);
             } else {
+                if (barcode.includes('(10)')) {
+               		var index_10 = barcode.indexOf('(10)');
+			        var serial_lot = barcode.substring(index_10+4);
+			        if (serial_lot.includes('('))
+			            { 
+			            var index_new_bracket = serial_lot.indexOf('(');
+			            serial_lot = serial_lot.substring(0, index_new_bracket);
+			            }
+               		def = self._rpc({
+					                    model: 'stock.production.lot',
+					                    method: 'search_read',
+					                    domain: [['name', '=', serial_lot]],
+					                });
+				} else {
                 def = self._rpc({
                     model: 'stock.production.lot',
                     method: 'search_read',
                     domain: [['name', '=', barcode]],
-                });
+                });}
             }
             return def.then(function (res) {
                 if (! res.length) {

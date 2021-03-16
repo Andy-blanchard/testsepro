@@ -148,7 +148,7 @@
 
                         <div class="row no-gutters">
                             <div class="col-4" style="line-height: 2.6rem; font-size: 1.2rem; font-weight: 300;">
-                                <div>BATCH/LOTc</div>
+                                <div>BATCH/LOT</div>
                                 <div style="line-height: 0; font-size: 1.1rem; width: 250px;">(Los/Charge):</div>
                             </div>
                             <div class="col-8" style="line-height: 3.85rem; text-align: right; font-weight: 300; font-size: 2.2rem;">

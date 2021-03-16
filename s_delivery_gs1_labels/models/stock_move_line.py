@@ -4,9 +4,11 @@ from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 from odoo.tools.float_utils import float_compare, float_round
 
-class StockMove(models.Model):
-    _inherit = 'stock.move.line'      
+class StockMoveLine(models.Model):
+    _inherit = 'stock.move.line'  
     
+    qty_done_char = fields.Char(string='Done', default=0.0, digits='Product Unit of Measure', copy=False)  
+    scan_qty = fields.Boolean(string="Scan Quantity") 
     
     def on_barcode_scanned(self, barcode):
         if not self.env.company.nomenclature_id:
@@ -210,3 +212,31 @@ class StockMove(models.Model):
                 'location_dest_id': location.id,
             })
         return True
+    
+    @api.onchange('qty_done_char')
+    def _onchange_qty_done_char(self):
+        if self.qty_done_char and '(37)' in str(self.qty_done_char):
+            quantity = False
+            barcode = str(self.qty_done_char)
+            index_37 = barcode.find('(37)')
+            quantity = barcode[index_37+4:]
+            if '(' in quantity:
+                index_new_bracket = quantity.find('(')
+                quantity = quantity[:index_new_bracket]
+            self.qty_done_char = quantity
+            self.qty_done = quantity
+        else:
+            try:                
+                self.qty_done = float(self.qty_done_char)
+            except:
+                self.qty_done = 0.0
+                self.qty_done_char = 0.0
+            
+    @api.onchange('qty_done')
+    def _onchange_qty_done(self):
+        res = super(StockMoveLine, self)._onchange_qty_done()
+        if self.qty_done and float_compare(self.qty_done, float(self.qty_done_char), precision_rounding=self.product_uom_id.rounding) != 0:
+            self.qty_done_char = self.qty_done
+        return res
+                
+    

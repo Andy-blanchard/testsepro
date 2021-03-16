@@ -47,5 +47,16 @@
             </xpath>
         </field>
     </record>
+    
+    <record id="quant_package_search_view" model="ir.ui.view">
+        <field name="name">stock.quant.package.search</field>
+        <field name="model">stock.quant.package</field>
+        <field name="inherit_id" ref="stock.quant_package_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="filter_domain">['|', ('name', 'ilike', self), ('sscc_number', 'ilike', self)]</attribute>
+            </xpath>
+        </field>
+    </record>
 
 </odoo>

@@ -1,0 +1,415 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s_delivery_gs1_labels
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0-20210105\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-16 07:23+0000\n"
+"PO-Revision-Date: 2021-03-16 07:23+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s_delivery_gs1_labels
+#: code:addons/s_delivery_gs1_labels/models/delivery_gs1_label.py:0
+#, python-format
+msgid ""
+"\n"
+"\n"
+" - Following packages have no products assigned. Maybe you have not assigned any quantities and validated your related pickings: \n"
+msgstr ""
+"\n"
+"\n"
+" - Aucun produit n'est attribué aux colis suivants. Peut-être n'avez-vous attribué aucune quantité et validé vos transferts associés: \n"
+
+#. module: s_delivery_gs1_labels
+#: code:addons/s_delivery_gs1_labels/models/delivery_gs1_label.py:0
+#, python-format
+msgid ""
+"\n"
+"\n"
+" - Following packages have no valid SSCC number with 18 characters: \n"
+msgstr ""
+"\n"
+"\n"
+" - Les colis suivants n'ont pas de numéro SSCC valide avec 18 caractères: \n"
+
+#. module: s_delivery_gs1_labels
+#: code:addons/s_delivery_gs1_labels/models/delivery_gs1_label.py:0
+#, python-format
+msgid ""
+"\n"
+"\n"
+" - Following products do not have a valid barcode with 13 characters: \n"
+msgstr ""
+"\n"
+"\n"
+" - Les produits suivants n'ont pas de code-barres valide à 13 caractères: \n"
+
+#. module: s_delivery_gs1_labels
+#: code:addons/s_delivery_gs1_labels/models/delivery_gs1_label.py:0
+#, python-format
+msgid ""
+"\n"
+"\n"
+" - No packages found in selected picking(s) (%s)"
+msgstr ""
+"\n"
+"\n"
+" - Aucun colis trouvé dans les transferts séléctionnés (%s)"
+
+#. module: s_delivery_gs1_labels
+#: code:addons/s_delivery_gs1_labels/models/delivery_gs1_label.py:0
+#, python-format
+msgid ""
+"\n"
+"\n"
+" No valid packages to print available."
+msgstr ""
+"\n"
+"\n"
+" Aucun colis valide à imprimer disponible."
+
+#. module: s_delivery_gs1_labels
+#: model:ir.actions.report,print_report_name:s_delivery_gs1_labels.s_action_report_gs1_sscc_label_package
+#: model:ir.actions.report,print_report_name:s_delivery_gs1_labels.s_action_report_gs1_sscc_label_picking
+msgid "'Package - %s' % object.name"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:s_delivery_gs1_labels.gs1_label_compact
+msgid "(Best before date):"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:s_delivery_gs1_labels.gs1_label_compact
+msgid "(GTIN of the trade item):"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:s_delivery_gs1_labels.gs1_label_compact
+msgid "(Los/Charge):"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:s_delivery_gs1_labels.gs1_label_compact
+msgid "(Quantity of trade items):"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:s_delivery_gs1_labels.s_gs1_view_quant_package_kanban
+msgid "<span style=\"margin-right: 2px;\">SSCC:</span>"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:s_delivery_gs1_labels.gs1_label_compact
+msgid "BATCH/LOT"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:s_delivery_gs1_labels.gs1_label_compact
+msgid "BEST BEFORE, dd.mm.yyy"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:s_delivery_gs1_labels.gs1_label_compact
+msgid "Barcode"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model,name:s_delivery_gs1_labels.model_barcode_nomenclature
+msgid "Barcode Nomenclature"
+msgstr "Nomenclature de code-barres"
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model,name:s_delivery_gs1_labels.model_barcode_rule
+msgid "Barcode Rule"
+msgstr "Règle de code-barres"
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model,name:s_delivery_gs1_labels.model_base_report_s_delivery_gs1_labels
+msgid "Base report model for GS1 specification validation."
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:s_delivery_gs1_labels.gs1_label_compact
+msgid "CONTENT"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:s_delivery_gs1_labels.gs1_label_compact
+msgid "COUNT"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: code:addons/s_delivery_gs1_labels/models/delivery_gs1_label.py:0
+#, python-format
+msgid "Can not print SSCC shipping label(s), one or more errors found:"
+msgstr "Impossible d'imprimer les étiquettes d'expédition SSCC, une ou plusieurs erreurs ont été détectées:"
+
+#. module: s_delivery_gs1_labels
+#: code:addons/s_delivery_gs1_labels/models/stock_move.py:0
+#, python-format
+msgid "Detailed Operations"
+msgstr "Opérations détaillées"
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model.fields,field_description:s_delivery_gs1_labels.field_base_report_s_delivery_gs1_labels__display_name
+#: model:ir.model.fields,field_description:s_delivery_gs1_labels.field_report_s_delivery_gs1_labels_gs1_label_package__display_name
+#: model:ir.model.fields,field_description:s_delivery_gs1_labels.field_report_s_delivery_gs1_labels_gs1_label_picking__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model.fields,field_description:s_delivery_gs1_labels.field_stock_move_line__qty_done_char
+msgid "Done"
+msgstr "Fait"
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model.fields,field_description:s_delivery_gs1_labels.field_barcode_rule__encoding
+msgid "Encoding"
+msgstr "Encodage"
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model.fields.selection,name:s_delivery_gs1_labels.selection__barcode_rule__encoding__gs1
+msgid "GS1"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model.fields,field_description:s_delivery_gs1_labels.field_stock_quant__computed_barcode_article
+msgid "GS1 Article Barcode"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model.fields,field_description:s_delivery_gs1_labels.field_stock_quant__computed_barcode_article_text
+msgid "GS1 Article Barcode Text"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model.fields,field_description:s_delivery_gs1_labels.field_stock_quant__computed_barcode_lot
+msgid "GS1 Lot Barcode"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model.fields,field_description:s_delivery_gs1_labels.field_stock_quant__computed_barcode_lot_text
+msgid "GS1 Lot Barcode Text"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model:ir.actions.report,name:s_delivery_gs1_labels.s_action_report_gs1_sscc_label_package
+#: model:ir.actions.report,name:s_delivery_gs1_labels.s_action_report_gs1_sscc_label_picking
+msgid "GS1 Package Labels (PDF)"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:s_delivery_gs1_labels.s_product_normal_form_view_inherit_barcode_via_menuitem
+#: model_terms:ir.ui.view,arch_db:s_delivery_gs1_labels.s_product_packaging_form_view_barcode_button
+#: model_terms:ir.ui.view,arch_db:s_delivery_gs1_labels.s_product_template_only_form_view_barcode_button
+#: model_terms:ir.ui.view,arch_db:s_delivery_gs1_labels.s_product_variant_easy_edit_view_inherit_barcode_via_smartbuttons
+msgid "Generate GTIN"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model.fields,field_description:s_delivery_gs1_labels.field_base_report_s_delivery_gs1_labels__id
+#: model:ir.model.fields,field_description:s_delivery_gs1_labels.field_report_s_delivery_gs1_labels_gs1_label_package__id
+#: model:ir.model.fields,field_description:s_delivery_gs1_labels.field_report_s_delivery_gs1_labels_gs1_label_picking__id
+msgid "ID"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model.fields,field_description:s_delivery_gs1_labels.field_base_report_s_delivery_gs1_labels____last_update
+#: model:ir.model.fields,field_description:s_delivery_gs1_labels.field_report_s_delivery_gs1_labels_gs1_label_package____last_update
+#: model:ir.model.fields,field_description:s_delivery_gs1_labels.field_report_s_delivery_gs1_labels_gs1_label_picking____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model,name:s_delivery_gs1_labels.model_stock_production_lot
+msgid "Lot/Serial"
+msgstr "Lot/N° série"
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model,name:s_delivery_gs1_labels.model_stock_quant_package
+msgid "Packages"
+msgstr "Colis"
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model,name:s_delivery_gs1_labels.model_product_product
+msgid "Product"
+msgstr "Article"
+
+#. module: s_delivery_gs1_labels
+#: code:addons/s_delivery_gs1_labels/models/product_packaging.py:0
+#: code:addons/s_delivery_gs1_labels/models/product_product.py:0
+#: code:addons/s_delivery_gs1_labels/models/product_template.py:0
+#, python-format
+msgid ""
+"Product %s already has an assigned barcode [%s]. If you are sure, you want "
+"to set a new barcode, please empty the current barcode field."
+msgstr ""
+"L'article %s a déjà un code-barres attribué [%s]. Si vous êtes sûr, vous voulez "
+"définir un nouveau code-barres, veuillez vider le champ du code-barres actuel."
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model,name:s_delivery_gs1_labels.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Mouvements d'article (Ligne de mouvement de stock)"
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model,name:s_delivery_gs1_labels.model_product_packaging
+msgid "Product Packaging"
+msgstr "Emballage des produits"
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model,name:s_delivery_gs1_labels.model_product_template
+msgid "Product Template"
+msgstr "Modèle d'article"
+
+#. module: s_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:s_delivery_gs1_labels.stock_move_line_product_selector
+msgid "Quantity"
+msgstr "Quantité"
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model,name:s_delivery_gs1_labels.model_stock_quant
+msgid "Quants"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model,name:s_delivery_gs1_labels.model_report_s_delivery_gs1_labels_gs1_label_package
+#: model:ir.model,name:s_delivery_gs1_labels.model_report_s_delivery_gs1_labels_gs1_label_picking
+msgid "Report model for GS1 labels with GS1 specification validation."
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model.fields,field_description:s_delivery_gs1_labels.field_stock_quant_package__sscc_number
+msgid "SSCC"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#: model_terms:ir.ui.view,arch_db:s_delivery_gs1_labels.gs1_label_compact
+msgid "SSCC:"
+msgstr ""
+
+#. module: s_delivery_gs1_labels
+#. openerp-web
+#: code:addons/s_delivery_gs1_labels/static/src/js/client_action/abstract_client_action.js:0
+#, python-format
+msgid "Scanning is disabled in this state."
+msgstr "Le scannage est désactivé dans cet état."
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model,name:s_delivery_gs1_labels.model_stock_move
+msgid "Stock Move"
+msgstr "Stock déplacer"
+
+#. module: s_delivery_gs1_labels
+#: code:addons/s_delivery_gs1_labels/models/stock_move.py:0
+#: code:addons/s_delivery_gs1_labels/models/stock_move_line.py:0
+#: code:addons/s_delivery_gs1_labels/models/stock_picking.py:0
+#, python-format
+msgid ""
+"The barcode \"%(barcode)s\" doesn't correspond to a proper product, package "
+"or location."
+msgstr ""
+"Le code-barres \"%(barcode)s\" ne correspond ni à un produit, ni à un "
+"paquet, ni à un emplacement."
+
+#. module: s_delivery_gs1_labels
+#. openerp-web
+#: code:addons/s_delivery_gs1_labels/static/src/js/client_action/abstract_client_action.js:0
+#, python-format
+msgid "The scanned lot does not match an existing one."
+msgstr "Le lot scanné ne correspond a aucun lot existant."
+
+#. module: s_delivery_gs1_labels
+#. openerp-web
+#: code:addons/s_delivery_gs1_labels/static/src/js/client_action/abstract_client_action.js:0
+#, python-format
+msgid "The scanned serial number is already used."
+msgstr "Le numéro de série scanné est déjà utilisé."
+
+#. module: s_delivery_gs1_labels
+#. openerp-web
+#: code:addons/s_delivery_gs1_labels/static/src/js/client_action/abstract_client_action.js:0
+#: code:addons/s_delivery_gs1_labels/static/src/js/client_action/abstract_client_action.js:0
+#, python-format
+msgid "This location is not a child of the main location."
+msgstr "Cet emplacement n'est pas un enfant de l'emplacement principal."
+
+#. module: s_delivery_gs1_labels
+#. openerp-web
+#: code:addons/s_delivery_gs1_labels/static/src/js/client_action/abstract_client_action.js:0
+#: code:addons/s_delivery_gs1_labels/static/src/js/client_action/abstract_client_action.js:0
+#, python-format
+msgid "This package is already scanned."
+msgstr "Ce paquet est déjà scanné."
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model.fields,help:s_delivery_gs1_labels.field_barcode_rule__encoding
+msgid ""
+"This rule will apply only if the barcode is encoded with the specified "
+"encoding"
+msgstr ""
+"Cette règle s'appliquera uniquement si le code-barres est encodé avec "
+"l'encodage spécifié"
+
+#. module: s_delivery_gs1_labels
+#: model:ir.model,name:s_delivery_gs1_labels.model_stock_picking
+msgid "Transfer"
+msgstr "Transfert"
+
+#. module: s_delivery_gs1_labels
+#. openerp-web
+#: code:addons/s_delivery_gs1_labels/static/src/js/client_action/abstract_client_action.js:0
+#: code:addons/s_delivery_gs1_labels/static/src/js/client_action/abstract_client_action.js:0
+#, python-format
+msgid "Warning"
+msgstr "Avertissement"
+
+#. module: s_delivery_gs1_labels
+#: code:addons/s_delivery_gs1_labels/models/stock_move.py:0
+#: code:addons/s_delivery_gs1_labels/models/stock_move_line.py:0
+#: code:addons/s_delivery_gs1_labels/models/stock_picking.py:0
+#, python-format
+msgid "Wrong barcode"
+msgstr "Mauvais code-barres"
+
+#. module: s_delivery_gs1_labels
+#. openerp-web
+#: code:addons/s_delivery_gs1_labels/static/src/js/client_action/abstract_client_action.js:0
+#, python-format
+msgid "You are expected to scan a source location."
+msgstr "Vous devez scanner un emplacement de stock"
+
+#. module: s_delivery_gs1_labels
+#. openerp-web
+#: code:addons/s_delivery_gs1_labels/static/src/js/client_action/abstract_client_action.js:0
+#, python-format
+msgid "You are expected to scan more products or a destination location."
+msgstr "Vous devez scanner plus d'articles ou en emplacement de stock."
+
+#. module: s_delivery_gs1_labels
+#. openerp-web
+#: code:addons/s_delivery_gs1_labels/static/src/js/client_action/abstract_client_action.js:0
+#: code:addons/s_delivery_gs1_labels/static/src/js/client_action/abstract_client_action.js:0
+#, python-format
+msgid ""
+"You are expected to scan one or more products or a package available at the "
+"picking's location"
+msgstr ""
+"Vous devez scanner un ou plusieurs articles ou un paquet disponible à "
+"l'emplacement de stock de transfert"
+
+#. module: s_delivery_gs1_labels
+#. openerp-web
+#: code:addons/s_delivery_gs1_labels/static/src/js/client_action/abstract_client_action.js:0
+#: code:addons/s_delivery_gs1_labels/static/src/js/client_action/abstract_client_action.js:0
+#, python-format
+msgid "You are expected to scan one or more products."
+msgstr "Vous devez scanner un ou plusieurs articles."

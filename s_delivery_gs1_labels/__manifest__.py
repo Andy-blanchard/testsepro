@@ -19,10 +19,10 @@ Keywords
 Packaging, Picking, GS1, SSCC, Barcodes
 
 """,
-    'author': 'Scopea',
+	'author': 'Scopea',
     'contributors': ['Scopea'],
     'website': 'scopea.fr',
-	'category': 'Tools',
+    'category': 'Tools',
     'version': '13.02',
     'installable': True,
     'application': False,
